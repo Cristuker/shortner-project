@@ -3,7 +3,6 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { User } from "./user.entity";
 import { UsersRepository } from "./user.repository";
 import { UsersService } from "./user.service";
-import { BusinessException } from "../exceptions/BusinessException";
 
 describe("User service test", () => {
 	let service: UsersService;

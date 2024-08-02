@@ -15,7 +15,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 			username: "root",
 			password: "root",
 			database: "teddy_api",
-			entities: [__dirname + "/../**/*.entity{.ts,.js}"],
+			entities: [__dirname + "/**/*.entity{.ts,.js}"],
 			// remove to production
 			synchronize: true,
 		}),

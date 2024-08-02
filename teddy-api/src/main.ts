@@ -6,6 +6,7 @@ async function bootstrap() {
 	const app = await NestFactory.create(AppModule, {
 		logger: ["debug", "error", "log", "warn"],
 	});
+
 	const config = new DocumentBuilder()
 		.setTitle("Teddy api")
 		.setDescription("The teddy API description")
