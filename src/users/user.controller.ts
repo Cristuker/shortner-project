@@ -1,16 +1,13 @@
 import {
 	Body,
 	Controller,
-	Get,
 	HttpCode,
 	HttpStatus,
 	Logger,
 	Post,
-	UseGuards
 } from "@nestjs/common";
 import { UsersService } from "./user.service";
 import { CreateUserDTO } from "./dto/create.user.dto";
-import { AuthGuard } from "../auth/auth.guard";
 
 @Controller("users")
 export class UsersController {

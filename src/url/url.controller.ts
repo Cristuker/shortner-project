@@ -1,7 +1,6 @@
-import { Body, Controller, Delete, HttpCode, HttpStatus, Param, Post, Req, UseGuards } from "@nestjs/common";
+import { Controller, Delete, HttpCode, HttpStatus, Param, Post, Req, UseGuards } from "@nestjs/common";
 import { URLService } from "./url.service";
 import { CreateUrlDTO } from "./dto/create.url.dto";
-import { DeleteUrlDTO } from "./dto/delete.url.dto";
 import { Request } from "express";
 import { AuthGuard } from "../auth/auth.guard";
 

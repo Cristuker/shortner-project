@@ -1,4 +1,4 @@
-import { MiddlewareConsumer, Module, RequestMethod } from "@nestjs/common";
+import { Module } from "@nestjs/common";
 import { UsersRepository } from "./user.repository";
 import { User } from "./user.entity";
 import { TypeOrmModule } from "@nestjs/typeorm";

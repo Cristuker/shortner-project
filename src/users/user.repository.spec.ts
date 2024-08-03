@@ -3,7 +3,6 @@ import { User } from "./user.entity";
 import { UsersRepository } from "./user.repository";
 import { getRepositoryToken, TypeOrmModule } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { AuthService } from "src/auth/auth.service";
 
 describe("User repository", () => {
 	let repository: Repository<User>;

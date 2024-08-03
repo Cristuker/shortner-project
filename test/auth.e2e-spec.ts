@@ -16,7 +16,7 @@ describe("Auth e2e", () => {
 		password: "123",
 	});
 
-	let usersService = {
+	const usersService = {
 		findOneByEmail: () => userStub(),
 	};
 

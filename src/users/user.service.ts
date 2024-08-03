@@ -5,7 +5,6 @@ import { userMapper } from "./user.mapper";
 import { passwordIsInvalid } from "./validations/passwordValidation";
 import { emailIsInvalid } from "./validations/emailValidation";
 import { CreateUserDTO } from "./dto/create.user.dto";
-import { AuthService } from "../auth/auth.service"
 import * as bcrypt from 'bcrypt';
 @Injectable()
 export class UsersService {

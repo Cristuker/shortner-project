@@ -1,7 +1,6 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { URLRepository } from "./url.repository";
 import { CreateUrlDTO } from "./dto/create.url.dto";
-import { DeleteUrlDTO } from "./dto/delete.url.dto";
 
 @Injectable()
 export class URLService {

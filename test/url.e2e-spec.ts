@@ -101,13 +101,32 @@ describe("URL e2e", () => {
 		await generateUser("test@test.com", "27546@Lc");
 		const resUser = await loginUser("test@test.com", "27546@Lc");
 		const resUrl = await generateUrlWithToken(body.url, resUser.body.access_token);
-
+		const url = new URL(resUrl.body.url);
+		const shortUrl = url.pathname.replace('/', '')
 		return request(app.getHttpServer())
-			.delete("/url")
+			.delete(`/url/${shortUrl}`)
 			.set("authorization", `Bearer ${resUser.body.access_token}`)
 			.send({
 				url: resUrl.body.url
 			})
 			.expect(204)
+	});
+
+	it("should delete a url without login", async () => {
+		const body = {
+			url: "www.google.com.br55",
+		};
+		await generateUser("test@test.com", "27546@Lc");
+		const resUser = await loginUser("test@test.com", "27546@Lc");
+		const resUrl = await generateUrlWithToken(body.url, resUser.body.access_token);
+		const url = new URL(resUrl.body.url);
+		const shortUrl = url.pathname.replace('/', '')
+
+		return request(app.getHttpServer())
+			.delete(`/url/${shortUrl}`)
+			.send({
+				url: resUrl.body.url
+			})
+			.expect(401)
 	});
 });

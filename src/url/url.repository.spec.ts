@@ -1,15 +1,12 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { URLRepository } from "./url.repository";
-import { getRepositoryToken, TypeOrmModule } from "@nestjs/typeorm";
+import { TypeOrmModule } from "@nestjs/typeorm";
 import { UsersRepository } from "../users/user.repository";
-import { Repository } from "typeorm";
 import { Url } from "./url.entity";
 import { CreateUrlDTO } from "./dto/create.url.dto";
-import { UsersModule } from "../users/users.module";
 import { User } from "../users/user.entity";
 
 describe("URL Repository", () => {
-	let repository: Repository<Url>;
 	let urlRepository: URLRepository;
 	let usersRepository: UsersRepository;
 
@@ -33,7 +30,6 @@ describe("URL Repository", () => {
 			],
 		}).compile();
 
-		repository = module.get<Repository<Url>>(getRepositoryToken(Url));
 		urlRepository = module.get<URLRepository>(URLRepository);
 		usersRepository = module.get<UsersRepository>(UsersRepository);
 	});
