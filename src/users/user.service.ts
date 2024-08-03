@@ -27,6 +27,9 @@ export class UsersService {
 
     async findOneByEmail(email: string) {
         const user = await this.usersRepository.findOne(email);
+        if (!user) {
+            throw new BadRequestException("User don't exist");
+        }
         return userMapper(user);
     }
 

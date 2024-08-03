@@ -43,20 +43,25 @@ describe("URL e2e", () => {
 	});
 
 	const generateUser = async (email: string, password: string) => {
-		await request(app.getHttpServer())
-			.post("/users/create")
-			.send({
-				email,
-				password,
-			})
+		await request(app.getHttpServer()).post("/users/create").send({
+			email,
+			password,
+		});
 	};
 
 	const loginUser = async (email: string, password: string) => {
+		return await request(app.getHttpServer()).post("/auth/login").send({
+			email,
+			password,
+		});
+	};
+
+	const generateUrlWithToken = async (url: string, token: string) => {
 		return await request(app.getHttpServer())
-			.post("/auth/login")
+			.post("/url/shorten")
+			.set("authorization", `Bearer ${token}`)
 			.send({
-				email,
-				password,
+				url,
 			});
 	};
 
@@ -87,5 +92,22 @@ describe("URL e2e", () => {
 			.then((response) => {
 				expect(response.body.url).toBeTruthy();
 			});
+	});
+
+	it("should delete a url", async () => {
+		const body = {
+			url: "www.google.com.br55",
+		};
+		await generateUser("test@test.com", "27546@Lc");
+		const resUser = await loginUser("test@test.com", "27546@Lc");
+		const resUrl = await generateUrlWithToken(body.url, resUser.body.access_token);
+
+		return request(app.getHttpServer())
+			.delete("/url")
+			.set("authorization", `Bearer ${resUser.body.access_token}`)
+			.send({
+				url: resUrl.body.url
+			})
+			.expect(204)
 	});
 });

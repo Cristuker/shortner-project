@@ -33,4 +33,29 @@ export class URLRepository {
 			throw new Error("Error on save url");
 		}
 	}
+
+	async delete(urlId: number) {
+		try {
+			await this.database.update(urlId, {
+				active: false
+			})
+		} catch (error) {
+			this.logger.error(error);
+			throw new Error("Error on update url");
+		}
+	}
+
+	async findByUrlAndUserId(shortUrl: string, userId: number) {
+		try {
+			const url = await this.database.findOneBy({ 
+				userId: userId, 
+				shortUrl: shortUrl
+			});
+			return url;
+		} catch (error) {
+			this.logger.error(error);
+			throw new Error("Error on find url");
+		}
+	}
+
 }
