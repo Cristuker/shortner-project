@@ -38,8 +38,10 @@ describe('/users', () => {
             password: '27546@Lc'
         } 
         return request(app.getHttpServer())
-        .post('/users')
+        .post('/users/create')
         .send(user)
         .expect(201)
     });
+
+
 })

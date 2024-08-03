@@ -1,16 +1,16 @@
 import {
 	Body,
 	Controller,
+	Get,
 	HttpCode,
 	HttpStatus,
 	Logger,
 	Post,
-	Put,
-	Res,
+	UseGuards
 } from "@nestjs/common";
 import { UsersService } from "./user.service";
 import { CreateUserDTO } from "./dto/create.user.dto";
-import { Response } from "express";
+import { AuthGuard } from "src/auth/auth.guard";
 
 @Controller("users")
 export class UsersController {
@@ -18,7 +18,7 @@ export class UsersController {
 
 	constructor(private readonly usersService: UsersService) {}
 
-	@Post("/")
+	@Post("/create")
 	@HttpCode(HttpStatus.CREATED)
 	async create(@Body() user: CreateUserDTO) {
 		await this.usersService.create(user);
