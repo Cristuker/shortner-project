@@ -7,8 +7,6 @@ import { AuthModule } from "../src/auth/auth.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { JwtModule } from "@nestjs/jwt";
 import { jwtConstants } from "../src/shared/constants/jwt";
-import { AuthGuard } from "../src/auth/auth.guard";
-import { URLService } from "../src/url/url.service";
 
 describe("URL e2e", () => {
 	let app: INestApplication;
@@ -81,7 +79,6 @@ describe("URL e2e", () => {
 		};
 		await generateUser("test@test.com", "27546@Lc");
 		const res = await loginUser("test@test.com", "27546@Lc");
-		console.log(res.body.access_token)
 		return request(app.getHttpServer())
 			.post("/url/shorten")
 			.set("authorization", `Bearer ${res.body.access_token}`)
