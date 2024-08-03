@@ -7,6 +7,7 @@ import { AuthModule } from "../src/auth/auth.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { JwtModule } from "@nestjs/jwt";
 import { jwtConstants } from "../src/shared/constants/jwt";
+import { truncateDatabase } from "./truncante-database";
 
 describe("URL e2e", () => {
 	let app: INestApplication;
@@ -38,6 +39,9 @@ describe("URL e2e", () => {
 		await app.init();
 	});
 
+	beforeEach(async () => {
+		await truncateDatabase();
+	});
 	afterAll(async () => {
 		await app.close();
 	});
@@ -67,7 +71,7 @@ describe("URL e2e", () => {
 
 	it("should generate a url", async () => {
 		const body = {
-			url: "www.google.com.br",
+			url: "http://www.google.com.br",
 		};
 		return request(app.getHttpServer())
 			.post("/url/shorten")
@@ -80,7 +84,7 @@ describe("URL e2e", () => {
 
 	it("should generate a url and associate a user", async () => {
 		const body = {
-			url: "www.google.com.br",
+			url: "http://www.google.com.br",
 		};
 		await generateUser("test@test.com", "27546@Lc");
 		const res = await loginUser("test@test.com", "27546@Lc");
@@ -96,7 +100,7 @@ describe("URL e2e", () => {
 
 	it("should delete a url", async () => {
 		const body = {
-			url: "www.google.com.br55",
+			url: "http://www.google.com.br",
 		};
 		await generateUser("test@test.com", "27546@Lc");
 		const resUser = await loginUser("test@test.com", "27546@Lc");
@@ -114,7 +118,7 @@ describe("URL e2e", () => {
 
 	it("should delete a url without login", async () => {
 		const body = {
-			url: "www.google.com.br55",
+			url: "http://www.google.com.br",
 		};
 		await generateUser("test@test.com", "27546@Lc");
 		const resUser = await loginUser("test@test.com", "27546@Lc");
@@ -127,6 +131,29 @@ describe("URL e2e", () => {
 			.send({
 				url: resUrl.body.url
 			})
+			.expect(401)
+	});
+
+	it("should find a url", async () => {
+		const body = {
+			url: "http://www.google.com.br",
+		};
+		await generateUser("test@test.com", "27546@Lc");
+		const resUser = await loginUser("test@test.com", "27546@Lc");
+		await generateUrlWithToken(body.url, resUser.body.access_token);
+		
+		return request(app.getHttpServer())
+			.get(`/url`)
+			.set("authorization", `Bearer ${resUser.body.access_token}`)
+			.expect(200)
+			.then((res) => {
+				expect(res.body.urls.length).toBe(1)
+			})
+	});
+
+	it("should try to find a url without login", async () => {
+		return request(app.getHttpServer())
+			.get(`/url`)
 			.expect(401)
 	});
 });

@@ -49,7 +49,8 @@ export class URLRepository {
 		try {
 			const url = await this.database.findOneBy({ 
 				userId: userId, 
-				shortUrl: shortUrl
+				shortUrl: shortUrl,
+				active: true
 			});
 			return url;
 		} catch (error) {
@@ -58,4 +59,55 @@ export class URLRepository {
 		}
 	}
 
+	async findByOldUrlAndUserId(oldUrl: string, shortUrl: string, userId: number) {
+		try {
+			const url = await this.database.findOneBy({ 
+				userId: userId, 
+				shortUrl: shortUrl,
+				originalUrl: oldUrl,
+				active: true
+			});
+			return url;
+		} catch (error) {
+			this.logger.error(error);
+			throw new Error("Error on find url");
+		}
+	}
+
+	async list(userId: number) {
+		try {
+			const url = await this.database.findBy({ 
+				userId: userId,
+				active: true
+			});
+
+			return url;
+		} catch (error) {
+			this.logger.error(error);
+			throw new Error("Error on list url");
+		}
+	}
+
+	async update(url: Url) {
+		try {
+			await this.database.update(url.id, url);
+			return url;
+		} catch (error) {
+			this.logger.error(error);
+			throw new Error("Error on list url");
+		}
+	}
+
+	async findByShortUrl(shortUrl: string) {
+		try {
+			const url = await this.database.findOneBy({ 
+				shortUrl: shortUrl,
+				active: true
+			});
+			return url;
+		} catch (error) {
+			this.logger.error(error);
+			throw new Error("Error on find url");
+		}
+	}
 }

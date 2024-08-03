@@ -5,7 +5,7 @@ import { UsersRepository } from "../users/user.repository";
 import { Url } from "./url.entity";
 import { CreateUrlDTO } from "./dto/create.url.dto";
 import { User } from "../users/user.entity";
-
+import { truncateDatabase } from "../../test/truncante-database";
 describe("URL Repository", () => {
 	let urlRepository: URLRepository;
 	let usersRepository: UsersRepository;
@@ -34,6 +34,10 @@ describe("URL Repository", () => {
 		usersRepository = module.get<UsersRepository>(UsersRepository);
 	});
 
+	beforeEach(async () => {
+		await truncateDatabase();
+	});
+
 	it("should create a url without user", async () => {
 		const body: CreateUrlDTO = {
 			url: "https://www.google.com.br",
@@ -47,7 +51,7 @@ describe("URL Repository", () => {
 	});
 
 	it("should create a url with user", async () => {
-        const user = await usersRepository.create("test@test.com", "test");
+        const user = await usersRepository.create("test2@test.com", "test");
 		const body: CreateUrlDTO = {
 			url: "https://www.google.com.br",
 		};

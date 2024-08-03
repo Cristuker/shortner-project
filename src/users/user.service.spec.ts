@@ -4,6 +4,7 @@ import { User } from "./user.entity";
 import { UsersRepository } from "./user.repository";
 import { UsersService } from "./user.service";
 import { AuthModule } from "../auth/auth.module";
+import { truncateDatabase } from "../../test/truncante-database";
 
 describe("User service test", () => {
 	let service: UsersService;
@@ -40,14 +41,19 @@ describe("User service test", () => {
 		service = module.get<UsersService>(UsersService);
 		userRepository = module.get<UsersRepository>(UsersRepository);
 	});
+
+	beforeEach(async () => {
+		await truncateDatabase();
+	});
+	
 	it("should create a user", async () => {
     const userRaw = {
-			email: "test@test.com",
+			email: "test3@test.com",
 			password: "12345@Cl",
 		};
 		const user = await service.create(userRaw);
 		expect(user).toBeDefined();
-		expect(user.email).toBe("test@test.com");
+		expect(user.email).toBe("test3@test.com");
 		expect(user.password).not.toBe("test");
 		expect(user.createdAt).toBeTruthy();
 		expect(user.updatedAt).toBeTruthy();
@@ -55,7 +61,7 @@ describe("User service test", () => {
 
 	it("should throw an error if password is invalid", async () => {
     const user = {
-			email: "test@test.com",
+			email: "test5@test.com",
 			password: "12345",
 		};
 		await expect(service.create(user)).rejects.toThrow();

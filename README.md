@@ -8,3 +8,4 @@ Melhorias
 * Isolar banco de dados nos testes e usar um banco em memoria
 * Refatorar para tirar o use guards de todas as rotas
 * Verificar se a url encurtada existe
+* configuração do banco

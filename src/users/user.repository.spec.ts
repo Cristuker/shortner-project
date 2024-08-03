@@ -3,6 +3,7 @@ import { User } from "./user.entity";
 import { UsersRepository } from "./user.repository";
 import { getRepositoryToken, TypeOrmModule } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
+import { truncateDatabase } from "../../test/truncante-database";
 
 describe("User repository", () => {
 	let repository: Repository<User>;
@@ -37,6 +38,10 @@ describe("User repository", () => {
 
 		repository = module.get<Repository<User>>(getRepositoryToken(User));
 		userRepository = module.get<UsersRepository>(UsersRepository);
+	});
+
+	beforeEach(async () => {
+		await truncateDatabase();
 	});
 
 	it("should create a user", async () => {
