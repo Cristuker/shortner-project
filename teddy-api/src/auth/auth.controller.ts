@@ -1,4 +1,5 @@
 import {
+	BadRequestException,
 	Body,
 	Controller,
 	HttpCode,
@@ -21,6 +22,10 @@ export class AuthController {
 	@HttpCode(HttpStatus.OK)
 	async login(@Body() body: AuthDTO) {
 		const user = await this.userService.findOneByEmail(body.email);
+		if (!user) {
+			this.logger.error("User not found");
+			throw new BadRequestException("User not found");
+		}
 		const access_token = await this.authService.signIn(body.email, body.password, user.password, user.id);
 		this.logger.log("User authenticated");
 		return access_token;

@@ -10,9 +10,9 @@ export class Url {
 	originalUrl: string;
 
 	@Column()
-	shortCutUrl: string;
+	shortUrl: string;
 
-	@Column()
+	@Column({ nullable: true })
 	userId: number;
 
 	@Column()

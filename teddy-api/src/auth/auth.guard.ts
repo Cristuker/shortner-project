@@ -15,7 +15,6 @@ import {
     async canActivate(context: ExecutionContext): Promise<boolean> {
       const request = context.switchToHttp().getRequest();
       const token = this.extractTokenFromHeader(request);
-      console.log(token)
       if (!token) {
         throw new UnauthorizedException();
       }
@@ -26,7 +25,6 @@ import {
             secret: jwtConstants.secret
           }
         );
-        console.log(payload)
         request['user'] = payload;
       } catch {
         throw new UnauthorizedException();

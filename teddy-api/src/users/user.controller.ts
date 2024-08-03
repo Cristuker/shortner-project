@@ -10,7 +10,7 @@ import {
 } from "@nestjs/common";
 import { UsersService } from "./user.service";
 import { CreateUserDTO } from "./dto/create.user.dto";
-import { AuthGuard } from "src/auth/auth.guard";
+import { AuthGuard } from "../auth/auth.guard";
 
 @Controller("users")
 export class UsersController {
@@ -24,4 +24,10 @@ export class UsersController {
 		await this.usersService.create(user);
 		this.logger.log("User created");
 	}
+
+	// @Get('/test')
+	// @UseGuards(AuthGuard)
+	// test() {
+	// 	return "teste"
+	// }
 }
