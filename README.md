@@ -44,3 +44,8 @@ $ npm run start:dev
 O redirecionamento é feito por outro serviço no seguinte [respositório](https://github.com/Cristuker/url-redirect).
 
 ## Arquitetura
+
+![Arquitetura](https://raw.githubusercontent.com/Cristuker/teddy-api/main/docs/url-api.png)
+
+
+<p align="center">Made whit ❤️ by <strong><a href="cristiansilva.dev" target="blank" >Cristian</></p></strong>
