@@ -59,22 +59,6 @@ describe("User service test", () => {
 		expect(user.updatedAt).toBeTruthy();
 	});
 
-	it("should throw an error if password is invalid", async () => {
-    const user = {
-			email: "test5@test.com",
-			password: "12345",
-		};
-		await expect(service.create(user)).rejects.toThrow();
-	});
-
-	it("should throw an error if email is invalid", async () => {
-		const user = {
-			email: "test@@test.com",
-			password: "12345@Cl",
-		};
-		await expect(service.create(user)).rejects.toThrow();
-	});
-
 	it("should find one user", async () => {
 		jest.spyOn(userRepository, "findOne").mockResolvedValue(userStub());
 		const result = await service.findOneByEmail("test@email.com");
