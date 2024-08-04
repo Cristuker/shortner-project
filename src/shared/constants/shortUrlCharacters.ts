@@ -1,0 +1,2 @@
+export const POSSIBLE_CHARACTERS =
+	"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

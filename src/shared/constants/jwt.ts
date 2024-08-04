@@ -1,3 +1,5 @@
+import 'dotenv/config'
+
 export const jwtConstants = Object.freeze({
-    secret: "TEDDY_API"
-})
+    secret: process.env.JWT_SECRET
+});

@@ -10,9 +10,12 @@ import {
 import { AuthService } from './auth.service'
 import { AuthDTO } from './dto/auth.dto';
 import { UsersService } from '../users/user.service';
+import { ApiBody, ApiResponse, ApiTags } from "@nestjs/swagger";
+import { TokenDTO } from "./dto/token.dto";
 
 
 @Controller("auth")
+@ApiTags("Auth")
 export class AuthController {
 	private readonly logger = new Logger(AuthController.name);
 
@@ -20,6 +23,9 @@ export class AuthController {
 
 	@Post("/login")
 	@HttpCode(HttpStatus.OK)
+	@ApiBody({ type: AuthDTO })
+	@ApiResponse({ status: 200, type: TokenDTO })
+	@ApiResponse({ status: 400, description: 'User not found' })
 	async login(@Body() body: AuthDTO) {
 		const user = await this.userService.findOneByEmail(body.email);
 		if (!user) {

@@ -27,6 +27,9 @@ export class Url {
 	@Column()
 	updatedAt: Date;
 
+	@Column({ nullable: true })
+	deleteAt: Date;
+
 	@ManyToOne(() => User, (user) => user.urls)
 	user: User;
 }

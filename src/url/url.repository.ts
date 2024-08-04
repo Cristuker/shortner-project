@@ -37,7 +37,8 @@ export class URLRepository {
 	async delete(urlId: number) {
 		try {
 			await this.database.update(urlId, {
-				active: false
+				active: false,
+				deleteAt: new Date()
 			})
 		} catch (error) {
 			this.logger.error(error);
@@ -59,12 +60,11 @@ export class URLRepository {
 		}
 	}
 
-	async findByOldUrlAndUserId(oldUrl: string, shortUrl: string, userId: number) {
+	async findByOldUrlAndUserId(shortUrl: string, userId: number) {
 		try {
 			const url = await this.database.findOneBy({ 
 				userId: userId, 
 				shortUrl: shortUrl,
-				originalUrl: oldUrl,
 				active: true
 			});
 			return url;
@@ -90,6 +90,7 @@ export class URLRepository {
 
 	async update(url: Url) {
 		try {
+			url.updatedAt = new Date();
 			await this.database.update(url.id, url);
 			return url;
 		} catch (error) {

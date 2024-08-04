@@ -1,5 +1,6 @@
 import { Injectable, UnauthorizedException } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
+import { TokenDTO } from './dto/token.dto'
 import * as bcrypt from "bcrypt";
 
 @Injectable()
@@ -11,7 +12,7 @@ export class AuthService {
 		password: string,
         hashedPassword: string,
 		id: number,
-	): Promise<{ access_token: string }> {
+	): Promise<TokenDTO> {
 		if (!this.comparePassword(password, hashedPassword)) {
 			throw new UnauthorizedException("Password is incorrect");
 		}
