@@ -30,6 +30,10 @@ $ docker compose up -d ou docker-compose up -d # vai depender da versão instala
 ```bash
 $ npm run start:dev
 ```
+
+## Usando
+
+Na raiz do projeto existe um collection do postman para ser importada e usada para fazer requisições.
 ## Melhorias
 
 * Isolar banco de dados nos testes e usar um banco em memoria, como usei o MySQL que foi me informado que é o banco usado por vcs ele não tem uma versão em memória.
