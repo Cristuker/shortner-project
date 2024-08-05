@@ -52,4 +52,4 @@ O redirecionamento é feito por outro serviço no seguinte [respositório](https
 ![Arquitetura](https://raw.githubusercontent.com/Cristuker/teddy-api/main/docs/url-api.png)
 
 
-<p align="center">Made whit ❤️ by <strong><a href="cristiansilva.dev" target="blank" >Cristian</></p></strong>
+<p align="center">Made with ❤️ by <strong><a href="cristiansilva.dev" target="blank" >Cristian</></p></strong>
