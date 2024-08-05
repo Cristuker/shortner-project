@@ -34,12 +34,16 @@ $ npm run start:dev
 ## Usando
 
 Na raiz do projeto existe um collection do postman para ser importada e usada para fazer requisições.
+
 ## Melhorias
 
 * Isolar banco de dados nos testes e usar um banco em memoria, como usei o MySQL que foi me informado que é o banco usado por vcs ele não tem uma versão em memória.
 
-* Refatorar para tirar o use guards de todas as rotas
+* Refatorar para tirar o use guards de todas as rotas e apenas dizer quais não precisam de autenticação.
+
 * Optei por deixar o serviço de redirecionamento separado pois no primeiro momento vai ser o mais usado pensando no mundo real. Onde a mesma URL pode ser acessada diversas vezes. Fazer com que as consultas fiquem mais rápidas para garantir o redirecionamento mais rápido ou até mesmo fazer com que a operação de redirecionamento e constagem aconteçam de forma paralela mas sem que haja falha na contagem ou redirecionamento.
+
+* Também seria interessante pensar em trabalhar com cache principalmente na aplicação de redicionamento para tornar o processo mais rápido, mas sempre sendo limpo após a edição da URL.
 
 **A documentação está disponivel no /api da aplicação**
 
