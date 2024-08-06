@@ -6,7 +6,20 @@ Api que encurta URL
 ## Requerimentos
 
 * Node.js v12 ou maior.
-* Baixar e configurar o [serviço de redirecionamento](#redicionamento)
+* Docker e docker compose
+* Postman
+
+## Stack
+
+* NestJS
+* Jest
+* Docker
+* Husky
+* dotenv
+* TypeORM
+* MySQL
+* JWT
+
 
 ## Como rodar
 
@@ -39,6 +52,7 @@ $ nest start url-redirect
 ## Usando
 
 Na raiz do projeto existe um collection do postman para ser importada e usada para fazer requisições.
+
 ## Melhorias
 
 * Isolar banco de dados nos testes e usar um banco em memoria, como usei o MySQL que foi me informado que é o banco usado por vcs ele não tem uma versão em memória.
