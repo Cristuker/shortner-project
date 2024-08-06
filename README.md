@@ -1,59 +1,73 @@
-# Short url API
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+</p>
 
-Api que encurta URL
+[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
+[circleci-url]: https://circleci.com/gh/nestjs/nest
 
+  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+    <p align="center">
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
+<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
+<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
+<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
+<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
+<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
+  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
+    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
+  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+</p>
+  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
+  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Requerimentos
+## Description
 
-* Node.js v12 ou maior.
-* Baixar e configurar o [serviço de redirecionamento](#redicionamento)
+[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Como rodar
-
-1. Clonar esse repositório
+## Installation
 
 ```bash
-$ git clone https://github.com/Cristuker/teddy-api.git
+$ npm install
 ```
-2. Instalar as dependências
+
+## Running the app
 
 ```bash
-$ npm i
-```
-3. Criar o banco de dados
+# development
+$ npm run start
 
-```bash
-$ docker compose up -d ou docker-compose up -d # vai depender da versão instalada
-```
-4. Rodar a aplicação
-
-```bash
+# watch mode
 $ npm run start:dev
+
+# production mode
+$ npm run start:prod
 ```
 
-## Usando
+## Test
 
-Na raiz do projeto existe um collection do postman para ser importada e usada para fazer requisições.
+```bash
+# unit tests
+$ npm run test
 
-## Melhorias
+# e2e tests
+$ npm run test:e2e
 
-* Isolar banco de dados nos testes e usar um banco em memoria, como usei o MySQL que foi me informado que é o banco usado por vcs ele não tem uma versão em memória.
+# test coverage
+$ npm run test:cov
+```
 
-* Refatorar para tirar o use guards de todas as rotas e apenas dizer quais não precisam de autenticação.
+## Support
 
-* Optei por deixar o serviço de redirecionamento separado pois no primeiro momento vai ser o mais usado pensando no mundo real. Onde a mesma URL pode ser acessada diversas vezes. Fazer com que as consultas fiquem mais rápidas para garantir o redirecionamento mais rápido ou até mesmo fazer com que a operação de redirecionamento e constagem aconteçam de forma paralela mas sem que haja falha na contagem ou redirecionamento.
+Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-* Também seria interessante pensar em trabalhar com cache principalmente na aplicação de redicionamento para tornar o processo mais rápido, mas sempre sendo limpo após a edição da URL.
+## Stay in touch
 
-**A documentação está disponivel no /api da aplicação**
+- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
+- Website - [https://nestjs.com](https://nestjs.com/)
+- Twitter - [@nestframework](https://twitter.com/nestframework)
 
-## Redicionamento
+## License
 
-O redirecionamento é feito por outro serviço no seguinte [respositório](https://github.com/Cristuker/url-redirect).
-
-## Arquitetura
-
-![Arquitetura](https://raw.githubusercontent.com/Cristuker/teddy-api/main/docs/url-api.png)
-
-
-<p align="center">Made with ❤️ by <strong><a href="cristiansilva.dev" target="blank" >Cristian</></p></strong>
+Nest is [MIT licensed](LICENSE).

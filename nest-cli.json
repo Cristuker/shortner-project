@@ -1,8 +1,41 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src",
+  "sourceRoot": "apps/shortner-project/src",
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/shortner-project/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/shortner-project",
+  "projects": {
+    "shortner-redirect": {
+      "type": "application",
+      "root": "apps/shortner-redirect",
+      "entryFile": "main",
+      "sourceRoot": "apps/shortner-redirect/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/shortner-redirect/tsconfig.app.json"
+      }
+    },
+    "shortner-api": {
+      "type": "application",
+      "root": "apps/shortner-api",
+      "entryFile": "main",
+      "sourceRoot": "apps/shortner-api/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/shortner-api/tsconfig.app.json"
+      }
+    },
+    "lib": {
+      "type": "library",
+      "root": "libs/lib",
+      "entryFile": "index",
+      "sourceRoot": "libs/lib/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/lib/tsconfig.lib.json"
+      }
+    }
   }
 }

@@ -9,3 +9,37 @@ services:
       MYSQL_DATABASE: teddy_api
     ports:
       - '3306:3306'
+
+  shortner-api:
+    build: 
+      context: .
+      dockerfile: ./apps/shortner-api/Dockerfile
+    container_name: shortner-api
+    environment:
+      API_REDIRECT_BASE: http://localhost:3001
+      DB_HOST: localhost
+      DB_PORT: 3306
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      DB_NAME: teddy_api
+      JWT_SECRET: URL_API
+    depends_on:
+      - db
+    ports:
+      - '3000:3000'
+
+  shortner-redirect:
+    build: 
+      context: .
+      dockerfile: ./apps/shortner-api/Dockerfile
+    container_name: shortner-redirect
+    environment:
+      DB_HOST: localhost
+      DB_PORT: 3306
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      DB_NAME: teddy_api
+    depends_on:
+      - db
+    ports:
+      - '3001:3001'
