@@ -1,6 +1,6 @@
-# Short url API
+# Short URL
 
-Api que encurta URL
+Projeto que encurta URLs.
 
 
 ## Requerimentos
@@ -70,5 +70,16 @@ O redirecionamento é feito por outro serviço no seguinte [respositório](https
 
 ![Arquitetura](https://raw.githubusercontent.com/Cristuker/teddy-api/main/docs/url-api.png)
 
+## Próximos passos
 
+[ ] Configurar docker-compose para subir todo o ecossistema
+[ ] Migrar o modulo de auth para um serviço
+[ ] Organizar o projeto e mover coisas em comum para o modulo library
+[ ] Subir projeto na AWS
+[ ] Refazer documentação
+[ ] Aumentar coverage
+[ ] Criar github actions
+    [ ] build
+    [ ] test
+    [ ] deploy
 <p align="center">Made with ❤️ by <strong><a href="cristiansilva.dev" target="blank" >Cristian</></p></strong>
