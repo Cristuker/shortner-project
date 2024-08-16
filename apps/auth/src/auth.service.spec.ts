@@ -1,7 +1,7 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { AuthService } from "./auth.service";
 import { JwtModule } from "@nestjs/jwt";
-import { jwtConstants } from "../shared/constants/jwt";
+import { jwtConstants } from "./constants/jwt";
 
 describe("Auth service", () => {
 	let service: AuthService;

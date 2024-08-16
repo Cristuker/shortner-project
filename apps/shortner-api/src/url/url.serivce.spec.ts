@@ -1,6 +1,6 @@
 import { TestingModule, Test } from "@nestjs/testing";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { AuthModule } from "../auth/auth.module";
+import { AuthModule } from "../../../auth/src/auth.module";
 import { URLRepository } from "./url.repository";
 import { URLService } from "./url.service";
 import { Url } from "./url.entity";

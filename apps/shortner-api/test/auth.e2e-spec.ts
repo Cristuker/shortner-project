@@ -2,7 +2,7 @@ import { INestApplication } from "@nestjs/common";
 import { TestingModule, Test } from "@nestjs/testing";
 import * as request from "supertest";
 import { UsersModule } from "../src/users/users.module";
-import { AuthModule } from "../src/auth/auth.module";
+import { AuthModule } from "../../auth/src/auth.module";
 import { UsersService } from "../src/users/user.service";
 import { TypeOrmModule } from "@nestjs/typeorm";
 

@@ -5,7 +5,7 @@ import {
 	UnauthorizedException,
 } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
-import { jwtConstants } from "../shared/constants/jwt";
+import { jwtConstants } from "./constants/jwt";
 import { Request } from "express";
 
 @Injectable()
@@ -18,6 +18,7 @@ export class AuthGuard implements CanActivate {
 
 		const isShortUrlRequest =
 			!token && request.method === "POST" && request.url === "/url/shorten";
+
 		if (isShortUrlRequest) return true;
 
 		if (!token) {

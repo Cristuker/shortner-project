@@ -2,7 +2,7 @@ import { Module } from "@nestjs/common";
 import { UsersModule } from "./users/users.module";
 import { UrlModule } from "./url/url.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { AuthModule } from "./auth/auth.module";
+import { AuthModule } from "../../auth/src/auth.module";
 import "dotenv/config";
 @Module({
 	imports: [

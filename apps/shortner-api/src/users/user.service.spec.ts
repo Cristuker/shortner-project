@@ -3,7 +3,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { User } from "./user.entity";
 import { UsersRepository } from "./user.repository";
 import { UsersService } from "./user.service";
-import { AuthModule } from "../auth/auth.module";
+import { AuthModule } from "../../../auth/src/auth.module";
 import { truncateDatabase } from "../../test/truncante-database";
 
 describe("User service test", () => {

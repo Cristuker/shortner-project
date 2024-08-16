@@ -15,7 +15,7 @@ import { URLService } from "./url.service";
 import { CreateUrlDTO } from "./dto/create.url.dto";
 import { UrlUpdateDTO } from "./dto/update.url.dto";
 import { Request } from "express";
-import { AuthGuard } from "../auth/auth.guard";
+import { AuthGuard } from "../../../auth/src/auth.guard";
 import {
 	ApiBody,
 	ApiHeader,

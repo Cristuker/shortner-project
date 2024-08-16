@@ -9,7 +9,6 @@ import {
 } from "@nestjs/common";
 import { AuthService } from "./auth.service";
 import { AuthDTO } from "./dto/auth.dto";
-import { UsersService } from "../users/user.service";
 import { ApiBody, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { TokenDTO } from "./dto/token.dto";
 
@@ -20,7 +19,6 @@ export class AuthController {
 
 	constructor(
 		private readonly authService: AuthService,
-		private readonly userService: UsersService,
 	) {}
 
 	@Post("/login")

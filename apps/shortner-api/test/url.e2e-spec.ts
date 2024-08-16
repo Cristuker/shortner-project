@@ -3,7 +3,7 @@ import { TestingModule, Test } from "@nestjs/testing";
 import * as request from "supertest";
 import { UsersModule } from "../src/users/users.module";
 import { UrlModule } from "../src/url/url.module";
-import { AuthModule } from "../src/auth/auth.module";
+import { AuthModule } from "../../auth/src/auth.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { JwtModule } from "@nestjs/jwt";
 import { jwtConstants } from "../src/shared/constants/jwt";
